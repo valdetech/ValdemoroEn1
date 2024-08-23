@@ -27,10 +27,15 @@ public class MainActivity : MauiAppCompatActivity
     {
         CreateNotificationChannel();
 
+#pragma warning disable CA1416 // Validar la compatibilidad de la plataforma
         if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu && ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
         {
-            ActivityCompat.RequestPermissions(this, new[] { Manifest.Permission.PostNotifications }, 0);
+#pragma warning disable CA1416 // Validar la compatibilidad de la plataforma
+            ActivityCompat.RequestPermissions(
+                this, [Manifest.Permission.PostNotifications], 0);
+#pragma warning restore CA1416 // Validar la compatibilidad de la plataforma
         }
+#pragma warning restore CA1416 // Validar la compatibilidad de la plataforma
     }
 
     private void CreateNotificationChannel()

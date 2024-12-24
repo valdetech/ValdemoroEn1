@@ -106,7 +106,7 @@
     </MenuItem>
 
     <Shell.FlyoutFooterTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="features:AppShellViewModel">
             <Label
                 Padding="16"
                 HorizontalTextAlignment="Center"

@@ -16,7 +16,7 @@
                 ItemsSource="{Binding Photos, Mode=OneTime}"
                 Loop="False">
                 <CarouselView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="x:String">
                         <Image
                             Aspect="AspectFill"
                             HeightRequest="250"

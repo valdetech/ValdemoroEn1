@@ -19,9 +19,9 @@
             <Picker
                 Title="{localization:Translate SelectDay}"
                 Margin="0,0,0,6"
-                ItemDisplayBinding="{Binding DisplayDate}"
                 ItemsSource="{Binding Dates, Mode=OneTime}"
-                SelectedItem="{Binding SelectedDate}" />
+                SelectedItem="{Binding SelectedDate}"
+                ItemDisplayBinding="{Binding DisplayDate, x:DataType=models:MovieDate}" />
             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                 <controls:FixedVerticalStackLayout BindableLayout.ItemsSource="{Binding Movies, Mode=OneTime}">
                     <BindableLayout.ItemTemplate>

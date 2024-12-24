@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:ValdemoroEn1.Resources.Localization"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:ValdemoroEn1.Controls"
     x:Name="this"
+    x:DataType="controls:StateLayout"
     toolkit:StateContainer.CurrentState="{Binding Source={x:Reference this}, Path=CurrentState}"
     CompressedLayout.IsHeadless="true">
     <toolkit:StateContainer.StateViews>

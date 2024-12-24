@@ -2,10 +2,13 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
+using AndroidX.Core.View;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Plugin.Firebase.CloudMessaging;
 using Platform = Microsoft.Maui.ApplicationModel.Platform;
@@ -18,7 +21,10 @@ public class MainActivity : MauiAppCompatActivity
     protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
+#pragma warning disable CA1422 // Validar la compatibilidad de la plataforma
         Window.SetStatusBarColor(Color.FromArgb("#043465").ToAndroid());
+#pragma warning restore CA1422 // Validar la compatibilidad de la plataforma
+
         HandleIntent(Intent);
         ConfigurationNotification();
     }

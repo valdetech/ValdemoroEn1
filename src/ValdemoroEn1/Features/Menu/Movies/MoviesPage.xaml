@@ -23,7 +23,7 @@
                 SelectedItem="{Binding SelectedDate}"
                 ItemDisplayBinding="{Binding DisplayDate, x:DataType=models:MovieDate}" />
             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
-                <controls:FixedVerticalStackLayout BindableLayout.ItemsSource="{Binding Movies, Mode=OneTime}">
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Movies, Mode=OneTime}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="models:Movie">
                             <Grid
@@ -44,7 +44,7 @@
                                     ColumnDefinitions="*"
                                     CompressedLayout.IsHeadless="true"
                                     RowDefinitions="auto,50,48">
-                                    <controls:FixedVerticalStackLayout
+                                    <VerticalStackLayout
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         CompressedLayout.IsHeadless="true"
@@ -52,7 +52,7 @@
                                         <Label LineBreakMode="TailTruncation" Text="{Binding Title, Mode=OneTime}" />
                                         <Label Text="{Binding Duration, Mode=OneTime, StringFormat='{0} min'}" />
                                         <Label Text="{localization:Translate SelectHour}" />
-                                    </controls:FixedVerticalStackLayout>
+                                    </VerticalStackLayout>
                                     <ScrollView
                                         Grid.Row="1"
                                         Grid.Column="0"
@@ -109,7 +109,7 @@
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
-                </controls:FixedVerticalStackLayout>
+                </VerticalStackLayout>
             </ScrollView>
         </controls:StateLayout.SuccessContent>
     </controls:StateLayout>

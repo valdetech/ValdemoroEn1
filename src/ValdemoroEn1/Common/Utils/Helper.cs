@@ -40,7 +40,7 @@ public class Helper
     public static IEnumerable<StopName> Stops()
     {
         string json = Preferences.Get("stopNames", "default");
-        if (json is "default") return new List<StopName>();
+        if (json is "default") return [];
 
         return JsonSerializer.Deserialize<IEnumerable<StopName>>(json);
     }

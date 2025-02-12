@@ -1,17 +1,7 @@
 ﻿namespace ValdemoroEn1.Models;
 
-public class InfoItem
+public class InfoItem(string icon, string title)
 {
-    public InfoItem()
-    {
-    }
-
-    public InfoItem(string icon, string title)
-    {
-        Icon = icon;
-        Title = title;
-    }
-
-    public string Icon { get; set; }
-    public string Title { get; set; }
+    public string Icon { get; set; } = icon;
+    public string Title { get; set; } = title;
 }

@@ -82,7 +82,7 @@ public partial class MoviesPageViewModel : BaseViewModel
             return movies;
         }
 
-        return new List<Movie>();
+        return [];
     }
 
     private List<MovieDate> GetDates()

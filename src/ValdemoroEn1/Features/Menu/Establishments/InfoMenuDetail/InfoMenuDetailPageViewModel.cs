@@ -18,8 +18,8 @@ public partial class InfoMenuDetailPageViewModel : BaseViewModel, IQueryAttribut
     {
     }
 
-    public ObservableCollection<InfoMenuDetail> InfoMenuDetails { get; set; } = new();
-    public ObservableCollection<ImageSource> Photos { get; set; } = new();
+    public ObservableCollection<InfoMenuDetail> InfoMenuDetails { get; set; } = [];
+    public ObservableCollection<ImageSource> Photos { get; set; } = [];
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {

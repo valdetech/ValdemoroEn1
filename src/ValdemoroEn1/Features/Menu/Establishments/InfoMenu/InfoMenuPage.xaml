@@ -22,8 +22,7 @@
                 RemainingItemsThresholdReachedCommand="{Binding LoadMoreInfoItemsCommand}"
                 SelectedItem="{Binding SelectedInfoMenu}"
                 SelectionChangedCommand="{Binding SelectionInfoMenuCommand}"
-                SelectionMode="Single"
-                VerticalOptions="FillAndExpand">
+                SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:InfoMenu">
                         <Grid

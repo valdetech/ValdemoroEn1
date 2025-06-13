@@ -2,7 +2,7 @@ using System.Windows.Input;
 
 namespace ValdemoroEn1.Controls;
 
-public partial class StateLayout : StackLayout
+public partial class StateLayout : Grid
 {
     public static readonly BindableProperty ErrorCommandProperty = BindableProperty.Create(nameof(ErrorCommand), typeof(ICommand), typeof(StateLayout), default(ICommand), BindingMode.TwoWay);
     public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(StateLayout), default);

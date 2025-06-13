@@ -17,40 +17,43 @@
         CurrentState="{Binding BaseState}"
         ErrorCommand="{Binding StopsMunicipalityCommand}">
         <controls:StateLayout.SuccessContent>
-            <Border Stroke="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" StrokeShape="RoundRectangle 10">
-                <SearchBar
+            <Grid RowDefinitions="50,auto,auto,auto,*">
+                <Border Grid.Row="0" Stroke="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" StrokeShape="RoundRectangle 10">
+                    <SearchBar x:Name="StoppedSearchBar"
                     BackgroundColor="White"
                     CancelButtonColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
                     FontSize="Small"
                     Placeholder="{localization:Translate StopCode}"
                     Text="{Binding TextStopCode}">
-                    <SearchBar.Effects>
-                        <effects:SearchBarTransparentEffect />
-                    </SearchBar.Effects>
-                    <SearchBar.Behaviors>
-                        <toolkit:UserStoppedTypingBehavior
-                            Command="{Binding SearchStopCommand}"
+                        <SearchBar.Effects>
+                            <effects:SearchBarTransparentEffect />
+                        </SearchBar.Effects>
+                        <SearchBar.Behaviors>
+                            <toolkit:UserStoppedTypingBehavior
+                            BindingContext="{Binding Path=BindingContext, 
+                            Source={x:Reference StoppedSearchBar}, x:DataType=SearchBar}"
+                            Command="{Binding SearchStopCommand, Mode=OneTime}"
                             MinimumLengthThreshold="1"
                             ShouldDismissKeyboardAutomatically="False"
                             StoppedTypingTimeThreshold="200" />
-                    </SearchBar.Behaviors>
-                </SearchBar>
-            </Border>
-            <CollectionView
+                        </SearchBar.Behaviors>
+                    </SearchBar>
+                </Border>
+                <CollectionView Grid.Row="1"
                 x:Name="SearchCollectionView"
                 Margin="0,0,0,16"
                 HeightRequest="0"
                 ItemSizingStrategy="MeasureFirstItem"
                 ItemsSource="{Binding StopMunicipalities}"
                 SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:StopName">
-                        <Grid
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:StopName">
+                            <Grid
                             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                             ColumnDefinitions="50,*"
                             CompressedLayout.IsHeadless="True"
                             RowDefinitions="35">
-                            <Label
+                                <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 FontSize="13"
@@ -58,7 +61,7 @@
                                 Text="{Binding ShortStopCode, Mode=OneTime}"
                                 TextColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
                                 VerticalTextAlignment="Center" />
-                            <Label
+                                <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 FontSize="13"
@@ -66,25 +69,23 @@
                                 Text="{Binding Name, Mode=OneTime}"
                                 TextColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
                                 VerticalTextAlignment="Center" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type features:SearchSchedulesRealTimePageViewModel}}, Path=SchedulesCommand, Mode=OneTime}" CommandParameter="{Binding ., Mode=OneTime}" x:DataType="features:SearchSchedulesRealTimePageViewModel" />
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Label
-                FontAttributes="Bold"
-                HorizontalTextAlignment="Center"
-                Text="{localization:Translate SearchBus}"
-                TextColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" />
-            <BoxView
-                Margin="0,0,0,10"
-                HeightRequest="1"
-                Color="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" />
-            <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout BindableLayout.ItemTemplateSelector="{StaticResource IssueiOSTemplateSelector}" BindableLayout.ItemsSource="{Binding StopNames, Mode=OneTime}" />
-            </ScrollView>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type features:SearchSchedulesRealTimePageViewModel}}, Path=SchedulesCommand, Mode=OneTime}" CommandParameter="{Binding ., Mode=OneTime}" x:DataType="features:SearchSchedulesRealTimePageViewModel" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Grid.Row="2" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{localization:Translate SearchBus}"
+                       TextColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" />
+                <BoxView Grid.Row="3" Margin="0,0,0,10" HeightRequest="1"
+                         Color="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" />
+                <ScrollView Grid.Row="4" VerticalScrollBarVisibility="Never">
+                    <VerticalStackLayout BindableLayout.ItemTemplateSelector="{StaticResource IssueiOSTemplateSelector}" BindableLayout.ItemsSource="{Binding StopNames, Mode=OneTime}" />
+                </ScrollView>
+            </Grid>
+
+           
         </controls:StateLayout.SuccessContent>
     </controls:StateLayout>
 </ContentPage>

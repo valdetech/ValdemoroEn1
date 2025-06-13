@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<StackLayout
+<Grid
     x:Class="ValdemoroEn1.Controls.StateLayout"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -9,71 +9,112 @@
     x:Name="this"
     x:DataType="controls:StateLayout"
     toolkit:StateContainer.CurrentState="{Binding Source={x:Reference this}, Path=CurrentState}"
-    CompressedLayout.IsHeadless="true">
+    CompressedLayout.IsHeadless="true"
+    RowDefinitions="*">
+
     <toolkit:StateContainer.StateViews>
         <ActivityIndicator
             toolkit:StateView.StateKey="Loading"
             IsRunning="True"
-            VerticalOptions="CenterAndExpand"
-            Color="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}" />
-        <VerticalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Color="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
+            Grid.Row="0" />
+        <Grid
             Padding="16"
             toolkit:StateView.StateKey="ConexError"
             CompressedLayout.IsHeadless="true"
-            Spacing="16"
-            VerticalOptions="CenterAndExpand">
+            RowDefinitions="Auto,Auto,Auto"
+            ColumnDefinitions="*"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Grid.Row="0">
             <Image
+                Grid.Row="0"
                 HeightRequest="250"
                 Source="conexerror"
-                WidthRequest="250" />
+                WidthRequest="250"
+                HorizontalOptions="Center" />
             <Label
+                Grid.Row="1"
                 HorizontalTextAlignment="Center"
                 Text="{localization:Translate ConexError}"
-                TextColor="{StaticResource BlueGeneral}" />
+                TextColor="{StaticResource BlueGeneral}"
+                HorizontalOptions="Center" />
             <Button
+                Grid.Row="2"
                 Clicked="Button_Clicked"
                 Style="{StaticResource ButtonGeneral}"
-                Text="{localization:Translate TryAgain}" />
-        </VerticalStackLayout>
-        <VerticalStackLayout
+                Text="{localization:Translate TryAgain}"
+                HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid
             Padding="16"
             toolkit:StateView.StateKey="CrtmError"
             CompressedLayout.IsHeadless="true"
-            Spacing="16"
-            VerticalOptions="CenterAndExpand">
+            RowDefinitions="Auto,Auto,Auto"
+            ColumnDefinitions="*"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Grid.Row="0">
             <Image
+                Grid.Row="0"
                 HeightRequest="250"
                 Source="crtmerror"
-                WidthRequest="250" />
+                WidthRequest="250"
+                HorizontalOptions="Center" />
             <Label
+                Grid.Row="1"
                 HorizontalTextAlignment="Center"
                 Text="{localization:Translate CrtmError}"
-                TextColor="{StaticResource BlueGeneral}" />
+                TextColor="{StaticResource BlueGeneral}"
+                HorizontalOptions="Center" />
             <Button
+                Grid.Row="2"
                 Clicked="Button_Clicked"
                 Style="{StaticResource ButtonGeneral}"
-                Text="{localization:Translate TryAgain}" />
-        </VerticalStackLayout>
-        <VerticalStackLayout
+                Text="{localization:Translate TryAgain}"
+                HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid
             Padding="16"
             toolkit:StateView.StateKey="Error"
             CompressedLayout.IsHeadless="true"
-            Spacing="16"
-            VerticalOptions="CenterAndExpand">
-            <Image Source="error" WidthRequest="250" />
+            RowDefinitions="Auto,Auto,Auto"
+            ColumnDefinitions="*"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Grid.Row="0">
+            <Image
+                Grid.Row="0"
+                Source="error"
+                WidthRequest="250"
+                HorizontalOptions="Center" />
             <Label
+                Grid.Row="1"
                 HorizontalTextAlignment="Center"
                 Text="{localization:Translate Error}"
-                TextColor="{StaticResource BlueGeneral}" />
+                TextColor="{StaticResource BlueGeneral}"
+                HorizontalOptions="Center" />
             <Button
+                Grid.Row="2"
                 Clicked="Button_Clicked"
                 Style="{StaticResource ButtonGeneral}"
-                Text="{localization:Translate TryAgain}" />
-        </VerticalStackLayout>
-        <StackLayout
+                Text="{localization:Translate TryAgain}"
+                HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid
             x:Name="StackSuccess"
             toolkit:StateView.StateKey="Success"
             CompressedLayout.IsHeadless="true"
-            VerticalOptions="FillAndExpand" />
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            RowDefinitions="*"
+            ColumnDefinitions="*"
+            Grid.Row="0" />
     </toolkit:StateContainer.StateViews>
-</StackLayout>
+
+</Grid>

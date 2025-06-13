@@ -33,6 +33,6 @@ public partial class LanguagePopup : Popup
             LocalizationResourceManager.Instance.SetCulture(new CultureInfo(appLanguage.Culture));
         }
 
-        Close();
+        _ = CloseAsync();
     }
 }

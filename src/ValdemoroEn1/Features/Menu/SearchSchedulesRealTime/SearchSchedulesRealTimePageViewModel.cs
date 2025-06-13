@@ -53,6 +53,7 @@ public partial class SearchSchedulesRealTimePageViewModel : BaseViewModel
     [RelayCommand]
     private async Task SchedulesAsync(StopName stopName)
     {
+        if (stopName == null) return;
         AddStopName(stopName);
         NavigationService.AddParameter("stopCode", stopName.StopCode);
         await NavigationService.NavigationAsync(AppSettings.SchedulesRealTime);

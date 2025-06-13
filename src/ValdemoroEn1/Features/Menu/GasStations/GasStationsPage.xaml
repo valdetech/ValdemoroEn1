@@ -15,21 +15,22 @@
         CurrentState="{Binding BaseState}"
         ErrorCommand="{Binding ShowFuelsCommand}">
         <controls:StateLayout.SuccessContent>
-            <Picker
+            <Grid RowDefinitions="auto,*">
+                <Picker Grid.Row="0"
                 Title="{localization:Translate SelectProduct}"
                 Margin="0,0,0,6"
                 ItemDisplayBinding="{Binding NombreProducto, x:DataType=dto:FuelResponse}"
                 ItemsSource="{Binding Fuels, Mode=OneTime}"
                 SelectedItem="{Binding SelectedFuel}" />
-            <CollectionView
+
+                <CollectionView Grid.Row="1"
                 ItemsSource="{Binding GasStations, Mode=OneTime}"
                 SelectedItem="{Binding SelectedStation}"
                 SelectionChangedCommand="{Binding SelectionStationCommand}"
-                SelectionMode="Single"
-                VerticalOptions="FillAndExpand">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="dto:ListaEESSPrecio">
-                        <Grid
+                SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="dto:ListaEESSPrecio">
+                            <Grid
                             Margin="0,0,0,16"
                             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                             ColumnDefinitions="60,170,*"
@@ -37,7 +38,7 @@
                             CompressedLayout.IsHeadless="true"
                             HeightRequest="60"
                             RowDefinitions="*,auto">
-                            <Border
+                                <Border
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Padding="6"
@@ -46,30 +47,32 @@
                                 Stroke="{StaticResource BlueGeneral}"
                                 StrokeShape="RoundRectangle 100"
                                 WidthRequest="48">
-                                <Label
+                                    <Label
                                     FontFamily="FontAwesomeSolid"
                                     HorizontalTextAlignment="Center"
                                     Text="{Static fontawesome:FontAwesomeIcons.GasPump}"
                                     TextColor="White"
                                     VerticalTextAlignment="Center" />
-                            </Border>
-                            <VerticalStackLayout
+                                </Border>
+                                <VerticalStackLayout
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 CompressedLayout.IsHeadless="true"
                                 VerticalOptions="Center">
-                                <Label FontAttributes="Bold" Text="{Binding Rotulo, Mode=OneTime}" />
-                                <Label Text="{Binding Direccion, Mode=OneTime}" />
-                            </VerticalStackLayout>
-                            <Label
+                                    <Label FontAttributes="Bold" Text="{Binding Rotulo, Mode=OneTime}" />
+                                    <Label Text="{Binding Direccion, Mode=OneTime}" />
+                                </VerticalStackLayout>
+                                <Label
                                 Grid.Row="0"
                                 Grid.Column="2"
                                 Text="{Binding PrecioProducto, Mode=OneTime, StringFormat='{0} €'}"
                                 VerticalTextAlignment="Center" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        
         </controls:StateLayout.SuccessContent>
     </controls:StateLayout>
 </ContentPage>

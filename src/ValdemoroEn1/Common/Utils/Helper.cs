@@ -21,8 +21,8 @@ public class Helper
 
     public static IEnumerable<StopName> Stops()
     {
-        string json = Preferences.Get("stopNames", "default");
-        if (json is "default") return [];
+        string json = Preferences.Get("stopNames", null);
+        if (string.IsNullOrEmpty(json)) return [];
 
         return JsonSerializer.Deserialize<IEnumerable<StopName>>(json);
     }

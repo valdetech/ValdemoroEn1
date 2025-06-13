@@ -15,66 +15,67 @@
         CurrentState="{Binding BaseState}"
         ErrorCommand="{Binding SchedulesCommand}">
         <controls:StateLayout.SuccessContent>
-            <Label
+            <Grid RowDefinitions="auto,*">
+                <Label Grid.Row="0"
                 Margin="0,0,0,16"
                 FontAttributes="Bold"
                 FontSize="16"
                 Text="{Binding StopTimesResponse.StopTimes.Stop.Name, Mode=OneTime}"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-            <CollectionView
+                <CollectionView
+                Grid.Row="1"
                 ItemsSource="{Binding StopTimesGroups, Mode=OneTime}"
-                SelectionMode="None"
-                VerticalOptions="FillAndExpand">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="16" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:StopTimesGroup">
-                        <Border Stroke="LightGray" StrokeShape="RoundRectangle 20">
-                            <Grid
+                SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="16" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:StopTimesGroup">
+                            <Border Stroke="LightGray" StrokeShape="RoundRectangle 20">
+                                <Grid
                                 ColumnDefinitions="*"
                                 CompressedLayout.IsHeadless="True"
                                 RowDefinitions="50,1,*">
-                                <Grid
+                                    <Grid
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Padding="6"
                                     ColumnDefinitions="70, *"
                                     CompressedLayout.IsHeadless="True"
                                     RowDefinitions="*">
-                                    <Border
+                                        <Border
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         HorizontalOptions="Start"
                                         StrokeShape="RoundRectangle 10"
                                         WidthRequest="70">
-                                        <Border.Triggers>
-                                            <DataTrigger
+                                            <Border.Triggers>
+                                                <DataTrigger
                                                 Binding="{Binding CodMode, Mode=OneTime}"
                                                 TargetType="Border"
                                                 Value="8">
-                                                <Setter Property="BackgroundColor" Value="#70AB1F" />
-                                            </DataTrigger>
-                                            <DataTrigger
+                                                    <Setter Property="BackgroundColor" Value="#70AB1F" />
+                                                </DataTrigger>
+                                                <DataTrigger
                                                 Binding="{Binding CodMode, Mode=OneTime}"
                                                 TargetType="Border"
                                                 Value="9">
-                                                <Setter Property="BackgroundColor" Value="Red" />
-                                            </DataTrigger>
-                                            <DataTrigger
+                                                    <Setter Property="BackgroundColor" Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger
                                                 Binding="{Binding CodMode, Mode=OneTime}"
                                                 TargetType="Border"
                                                 Value="5">
-                                                <Setter Property="BackgroundColor" Value="Red" />
-                                            </DataTrigger>
-                                        </Border.Triggers>
-                                        <Label
+                                                    <Setter Property="BackgroundColor" Value="Red" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Label
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Line, Mode=OneTime}"
                                             TextColor="White"
                                             VerticalTextAlignment="Center" />
-                                    </Border>
-                                    <Label
+                                        </Border>
+                                        <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         FontAttributes="Bold"
@@ -83,48 +84,48 @@
                                         LineBreakMode="TailTruncation"
                                         Text="{Binding Name, Mode=OneTime}"
                                         VerticalTextAlignment="Center" />
-                                </Grid>
-                                <BoxView
+                                    </Grid>
+                                    <BoxView
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HeightRequest="1"
-                                    HorizontalOptions="FillAndExpand"
                                     Color="LightGray" />
-                                <VerticalStackLayout
+                                    <VerticalStackLayout
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Padding="16"
                                     BindableLayout.ItemsSource="{Binding StopTimeNames, Mode=OneTime}"
                                     CompressedLayout.IsHeadless="True"
                                     Spacing="20">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate x:DataType="models:StopTimeName">
-                                            <VerticalStackLayout CompressedLayout.IsHeadless="True">
-                                                <Label
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="models:StopTimeName">
+                                                <VerticalStackLayout CompressedLayout.IsHeadless="True">
+                                                    <Label
                                                     FontAttributes="Bold"
                                                     FontSize="14"
                                                     Text="{Binding Name, Mode=OneTime}" />
-                                                <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
-                                                    <HorizontalStackLayout
+                                                    <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                                                        <HorizontalStackLayout
                                                         BindableLayout.ItemsSource="{Binding Times, Mode=OneTime}"
                                                         CompressedLayout.IsHeadless="True"
                                                         Spacing="16">
-                                                        <BindableLayout.ItemTemplate>
-                                                            <DataTemplate x:DataType="x:String">
-                                                                <Label FontSize="13" Text="{Binding ., Mode=OneTime}" />
-                                                            </DataTemplate>
-                                                        </BindableLayout.ItemTemplate>
-                                                    </HorizontalStackLayout>
-                                                </ScrollView>
-                                            </VerticalStackLayout>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                                            <BindableLayout.ItemTemplate>
+                                                                <DataTemplate x:DataType="x:String">
+                                                                    <Label FontSize="13" Text="{Binding ., Mode=OneTime}" />
+                                                                </DataTemplate>
+                                                            </BindableLayout.ItemTemplate>
+                                                        </HorizontalStackLayout>
+                                                    </ScrollView>
+                                                </VerticalStackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
         </controls:StateLayout.SuccessContent>
     </controls:StateLayout>
 </ContentPage>

@@ -16,16 +16,11 @@
         ErrorCommand="{Binding SchedulesCommand}">
         <controls:StateLayout.SuccessContent>
             <Grid RowDefinitions="auto,*">
-                <Label Grid.Row="0"
-                Margin="0,0,0,16"
-                FontAttributes="Bold"
-                FontSize="16"
-                Text="{Binding StopTimesResponse.StopTimes.Stop.Name, Mode=OneTime}"
-                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-                <CollectionView
-                Grid.Row="1"
-                ItemsSource="{Binding StopTimesGroups, Mode=OneTime}"
-                SelectionMode="None">
+                <Label Grid.Row="0" Margin="0,0,0,16" FontAttributes="Bold"
+                       FontSize="16" Text="{Binding StopTimesResponse.StopTimes.Stop.Name, Mode=OneTime}"
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                <CollectionView Grid.Row="1" ItemsSource="{Binding StopTimesGroups, Mode=OneTime}"
+                                SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="16" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>

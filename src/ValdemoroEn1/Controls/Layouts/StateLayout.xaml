@@ -106,8 +106,7 @@
                 HorizontalOptions="Center" />
         </Grid>
 
-        <Grid
-            x:Name="StackSuccess"
+        <Grid x:Name="StackSuccess"
             toolkit:StateView.StateKey="Success"
             CompressedLayout.IsHeadless="true"
             VerticalOptions="Fill"

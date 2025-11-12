@@ -28,7 +28,7 @@ public class AlertService
 
     public static Task<bool> DisplayAlertAsync(string title, string message, string accept, string cancel)
     {
-        return Shell.Current.DisplayAlert(title, message, accept, cancel);
+        return Shell.Current.DisplayAlertAsync(title, message, accept, cancel);
     }
 }
 

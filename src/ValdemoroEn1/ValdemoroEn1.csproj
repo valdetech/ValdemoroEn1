@@ -102,7 +102,7 @@
 		<EnableLLVM>false</EnableLLVM>
 	</PropertyGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'=='net9.0-android'">
+	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
 		<GoogleServicesJson Include="Platforms\Android\google-services.json" />
 		<ProguardConfiguration Include="Platforms\Android\proguard.cfg" />
 	</ItemGroup>

@@ -34,8 +34,8 @@ public class AppSettings
     public const string CityQuery = "Valdemoro";
 
     //Contact
-    public const string ContactUrl = "https://www.angelruben.es";
-    public const string ContactEmail = "info@angelruben.es";
+    public const string ContactUrl = "https://www.valdetech.es";
+    public const string ContactEmail = "info@valdetech.es";
 
     //Routes
     public const string About = "About";

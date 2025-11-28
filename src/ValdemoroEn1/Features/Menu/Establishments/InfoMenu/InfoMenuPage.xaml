@@ -28,7 +28,6 @@
                         <Grid
                             BackgroundColor="White"
                             ColumnDefinitions="68,*"
-                            CompressedLayout.IsHeadless="true"
                             RowDefinitions="*"
                             Style="{StaticResource GridGeneral}">
                             <Border

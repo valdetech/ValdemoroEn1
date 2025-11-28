@@ -51,7 +51,6 @@
                             <Grid
                             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                             ColumnDefinitions="50,*"
-                            CompressedLayout.IsHeadless="True"
                             RowDefinitions="35">
                                 <Label
                                 Grid.Row="0"
@@ -91,16 +90,18 @@
                                         <SwipeItems>
                                             <SwipeItem BackgroundColor="DarkRed"
                                                        Command="{Binding x:DataType='features:SearchSchedulesRealTimePageViewModel', Source={RelativeSource AncestorType={x:Type features:SearchSchedulesRealTimePageViewModel}}, Path=DeleteStopNameCommand}"
-                                                       CommandParameter="{Binding}"
-                                                       IconImageSource="{FontImage FontFamily=FontAwesomeSolid,
-                                                       Glyph={Static fontawesome:FontAwesomeIcons.Trash},
-                                                       Color=Black,
-                                                       Size=24}" />
+                                                       CommandParameter="{Binding}">
+                                                <SwipeItem.IconImageSource>
+                                                    <FontImageSource FontFamily="FontAwesomeSolid"
+                                                                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Trash}"
+                                                                     Color="Black"
+                                                                     Size="24" />
+                                                </SwipeItem.IconImageSource>
+                                            </SwipeItem>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                                            ColumnDefinitions="50,*"
-                                           CompressedLayout.IsHeadless="True"
                                            RowDefinitions="35">
                                         <Label
                                                 Grid.Row="0"

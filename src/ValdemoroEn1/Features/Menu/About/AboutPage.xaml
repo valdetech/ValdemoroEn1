@@ -90,6 +90,7 @@
                     <Label
                         FontAttributes="Bold"
                         Text="{localization:Translate ContactInfo}"
+                        Margin="0,0,0,8"
                         TextDecorations="Underline">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SendEmail_Tapped" />

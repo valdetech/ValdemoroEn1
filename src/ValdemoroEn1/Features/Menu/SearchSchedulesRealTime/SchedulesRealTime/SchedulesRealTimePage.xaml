@@ -29,14 +29,12 @@
                             <Border Stroke="LightGray" StrokeShape="RoundRectangle 20">
                                 <Grid
                                 ColumnDefinitions="*"
-                                CompressedLayout.IsHeadless="True"
                                 RowDefinitions="50,1,*">
                                     <Grid
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Padding="6"
                                     ColumnDefinitions="70, *"
-                                    CompressedLayout.IsHeadless="True"
                                     RowDefinitions="*">
                                         <Border
                                         Grid.Row="0"
@@ -90,11 +88,10 @@
                                     Grid.Column="0"
                                     Padding="16"
                                     BindableLayout.ItemsSource="{Binding StopTimeNames, Mode=OneTime}"
-                                    CompressedLayout.IsHeadless="True"
                                     Spacing="20">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate x:DataType="models:StopTimeName">
-                                                <VerticalStackLayout CompressedLayout.IsHeadless="True">
+                                                <VerticalStackLayout>
                                                     <Label
                                                     FontAttributes="Bold"
                                                     FontSize="14"
@@ -102,7 +99,6 @@
                                                     <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
                                                         <HorizontalStackLayout
                                                         BindableLayout.ItemsSource="{Binding Times, Mode=OneTime}"
-                                                        CompressedLayout.IsHeadless="True"
                                                         Spacing="16">
                                                             <BindableLayout.ItemTemplate>
                                                                 <DataTemplate x:DataType="x:String">

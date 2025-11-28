@@ -39,7 +39,6 @@
                     StrokeShape="RoundRectangle 20">
                     <StackLayout
                         BindableLayout.ItemsSource="{Binding InfoMenuDetails, Mode=OneTime}"
-                        CompressedLayout.IsHeadless="true"
                         Spacing="26">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:InfoMenuDetail">

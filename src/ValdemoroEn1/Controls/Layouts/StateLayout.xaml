@@ -9,7 +9,6 @@
     x:Name="this"
     x:DataType="controls:StateLayout"
     toolkit:StateContainer.CurrentState="{Binding Source={x:Reference this}, Path=CurrentState}"
-    CompressedLayout.IsHeadless="true"
     RowDefinitions="*">
 
     <toolkit:StateContainer.StateViews>
@@ -23,7 +22,6 @@
         <Grid
             Padding="16"
             toolkit:StateView.StateKey="ConexError"
-            CompressedLayout.IsHeadless="true"
             RowDefinitions="Auto,Auto,Auto"
             ColumnDefinitions="*"
             VerticalOptions="Center"
@@ -52,7 +50,6 @@
         <Grid
             Padding="16"
             toolkit:StateView.StateKey="CrtmError"
-            CompressedLayout.IsHeadless="true"
             RowDefinitions="Auto,Auto,Auto"
             ColumnDefinitions="*"
             VerticalOptions="Center"
@@ -81,7 +78,6 @@
         <Grid
             Padding="16"
             toolkit:StateView.StateKey="Error"
-            CompressedLayout.IsHeadless="true"
             RowDefinitions="Auto,Auto,Auto"
             ColumnDefinitions="*"
             VerticalOptions="Center"
@@ -108,7 +104,6 @@
 
         <Grid x:Name="StackSuccess"
             toolkit:StateView.StateKey="Success"
-            CompressedLayout.IsHeadless="true"
             VerticalOptions="Fill"
             HorizontalOptions="Fill"
             RowDefinitions="*"

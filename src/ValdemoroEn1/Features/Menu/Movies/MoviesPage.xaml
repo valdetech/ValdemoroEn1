@@ -32,7 +32,6 @@
                                 BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                                 ColumnDefinitions="120,*"
                                 ColumnSpacing="6"
-                                CompressedLayout.IsHeadless="true"
                                 RowDefinitions="190,auto">
                                     <Image
                                     Grid.Row="0"
@@ -43,12 +42,10 @@
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     ColumnDefinitions="*"
-                                    CompressedLayout.IsHeadless="true"
                                     RowDefinitions="auto,50,48">
                                         <VerticalStackLayout
                                         Grid.Row="0"
                                         Grid.Column="0"
-                                        CompressedLayout.IsHeadless="true"
                                         Spacing="10">
                                             <Label LineBreakMode="TailTruncation" Text="{Binding Title, Mode=OneTime}" />
                                             <Label Text="{Binding Duration, Mode=OneTime, StringFormat='{0} min'}" />
@@ -60,7 +57,7 @@
                                         HorizontalScrollBarVisibility="Always"
                                         Orientation="Horizontal"
                                         VerticalOptions="Center">
-                                            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Sessions, Mode=OneTime}" CompressedLayout.IsHeadless="true">
+                                            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Sessions, Mode=OneTime}">
                                                 <BindableLayout.ItemTemplate>
                                                     <DataTemplate x:DataType="models:Session">
                                                         <Border
@@ -80,7 +77,6 @@
                                         <HorizontalStackLayout
                                         Grid.Row="2"
                                         Grid.Column="0"
-                                        CompressedLayout.IsHeadless="true"
                                         HeightRequest="42"
                                         Spacing="6">
                                             <Border

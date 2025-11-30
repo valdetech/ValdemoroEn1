@@ -108,6 +108,6 @@ The application has a clean and tidy architecture, applying the best practices, 
 </a>
 
 # Copyright and license
-Copyright 2023 by Ángel Rubén
+Copyright 2023 by VALDE TECH SL
 
 Code released under the [MIT license](https://en.wikipedia.org/wiki/MIT_License)

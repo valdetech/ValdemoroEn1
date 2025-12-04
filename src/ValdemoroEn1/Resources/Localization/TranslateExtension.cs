@@ -1,6 +1,7 @@
 ﻿namespace ValdemoroEn1.Resources.Localization;
 
 [ContentProperty(nameof(Name))]
+[AcceptEmptyServiceProvider]
 public class TranslateExtension : IMarkupExtension<BindingBase>
 {
     public string Name { get; set; }

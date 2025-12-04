@@ -19,7 +19,7 @@ public partial class InfoMenuPageViewModel : BaseViewModel, IQueryAttributable
     private int _itemTreshold;
 
     private PlacesTextSearchRequest placesTextSearchRequest = null;
-    private readonly string[] postalCode = new string[] { "28340", "28341", "28342", "28343" };
+    private readonly string[] postalCode = ["28340", "28341", "28342", "28343"];
 
     public InfoMenuPageViewModel()
     {
@@ -100,7 +100,7 @@ public partial class InfoMenuPageViewModel : BaseViewModel, IQueryAttributable
 
     private async Task<List<InfoMenu>> InfoQueryAsync(IEnumerable<PlaceResult> results)
     {
-        List<InfoMenu> infoMenus = new();
+        List<InfoMenu> infoMenus = [];
 
         var cleanResults = results.Where(result => result.Photos != null && postalCode.Any(result.FormattedAddress.Contains)).ToList();
 

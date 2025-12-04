@@ -12,12 +12,11 @@ public partial class EstablishmentsPageViewModel : BaseViewModel
     }
 
     public ObservableCollection<InfoItem> Establishments { get; set; } =
-        new ObservableCollection<InfoItem>
-    {
+        [
         new InfoItem(FontAwesomeIcons.Utensils, AppResources.FoodDelivery),
         new InfoItem(FontAwesomeIcons.Utensils, AppResources.Restaurants),
         new InfoItem(FontAwesomeIcons.Hotel, AppResources.Hostels)
-    };
+    ];
 
     [RelayCommand]
     private async Task SelectionInfoItemAsync()

@@ -1,7 +1,7 @@
 ﻿using GoogleApi;
 using GoogleApi.Entities.Common.Enums;
-using GoogleApi.Entities.Places.Common.Enums;
 using GoogleApi.Entities.Places.Details.Request;
+using GoogleApi.Entities.Places.Details.Request.Enums;
 using GoogleApi.Entities.Places.Details.Response;
 using GoogleApi.Entities.Places.Photos.Request;
 using System.Collections.ObjectModel;
@@ -18,8 +18,8 @@ public partial class InfoMenuDetailPageViewModel : BaseViewModel, IQueryAttribut
     {
     }
 
-    public ObservableCollection<InfoMenuDetail> InfoMenuDetails { get; set; } = new();
-    public ObservableCollection<ImageSource> Photos { get; set; } = new();
+    public ObservableCollection<InfoMenuDetail> InfoMenuDetails { get; set; } = [];
+    public ObservableCollection<ImageSource> Photos { get; set; } = [];
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {

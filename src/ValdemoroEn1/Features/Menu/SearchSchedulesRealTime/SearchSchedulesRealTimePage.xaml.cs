@@ -29,4 +29,12 @@ public partial class SearchSchedulesRealTimePage : ContentPage
             };
         });
     }
+
+    private void SwipeItem_Invoked(object sender, EventArgs e)
+    {
+        if (sender is SwipeItem s && s.BindingContext is StopName stopName)
+        {
+            Vm.DeleteStopNameCommand.Execute(stopName);
+        }
+    }
 }

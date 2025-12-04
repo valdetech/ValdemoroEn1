@@ -14,11 +14,11 @@ public partial class LanguagePopup : Popup
         LanguageCollectionView.ItemsSource = AppLanguages;
     }
 
-    public List<AppLanguage> AppLanguages = new()
-    {
+    public List<AppLanguage> AppLanguages =
+    [
         new AppLanguage("es-Es", AppResources.Spanish),
         new AppLanguage("en-US", AppResources.English)
-    };
+    ];
 
     private void LanguageChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -33,6 +33,6 @@ public partial class LanguagePopup : Popup
             LocalizationResourceManager.Instance.SetCulture(new CultureInfo(appLanguage.Culture));
         }
 
-        Close();
+        _ = CloseAsync();
     }
 }

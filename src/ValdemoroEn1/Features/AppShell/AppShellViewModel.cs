@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using CommunityToolkit.Maui.Extensions;
 using Plugin.Firebase.CloudMessaging;
 using ValdemoroEn1.Controls;
 

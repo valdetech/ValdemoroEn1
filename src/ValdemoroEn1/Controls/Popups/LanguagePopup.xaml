@@ -6,50 +6,48 @@
     xmlns:localization="clr-namespace:ValdemoroEn1.Resources.Localization"
     xmlns:models="clr-namespace:ValdemoroEn1.Models"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    Size="260,200"
-    Color="Transparent">
-    <Border BackgroundColor="White" StrokeShape="RoundRectangle 20">
-        <Grid
-            Padding="16"
-            RowDefinitions="*,auto"
-            RowSpacing="20">
-            <CollectionView
+    WidthRequest="250"
+    HeightRequest="170"
+    Padding="0"
+    BackgroundColor="White">
+    <Grid RowDefinitions="*,auto"
+          RowSpacing="16">
+        <CollectionView
                 x:Name="LanguageCollectionView"
                 Grid.Row="0"
                 SelectionChanged="LanguageChanged"
                 SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="30" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:AppLanguage">
-                        <VerticalStackLayout Padding="6">
-                            <Label
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="30" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:AppLanguage">
+                    <VerticalStackLayout Padding="6">
+                        <Label
                                 x:Name="langLabel"
                                 FontAttributes="Bold"
                                 Text="{Binding Language}"
                                 TextColor="{StaticResource RedGeneral}" />
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Normal" />
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="{StaticResource BlueGeneral}" />
-                                            <Setter TargetName="langLabel" Property="Label.TextColor" Value="White" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" />
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource BlueGeneral}" />
+                                        <Setter TargetName="langLabel" Property="Label.TextColor" Value="White" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button 
                 Grid.Row="1"
                 Clicked="Button_Clicked"
                 Style="{StaticResource ButtonGeneral}"
                 Text="{localization:Translate Accept}"
-                WidthRequest="180" />
-        </Grid>
-    </Border>
+                WidthRequest="200" />
+    </Grid>
 </toolkit:Popup>

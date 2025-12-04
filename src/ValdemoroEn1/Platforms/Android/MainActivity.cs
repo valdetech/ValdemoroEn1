@@ -2,10 +2,13 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
+using AndroidX.Core.View;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Plugin.Firebase.CloudMessaging;
 using Platform = Microsoft.Maui.ApplicationModel.Platform;
@@ -18,7 +21,10 @@ public class MainActivity : MauiAppCompatActivity
     protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
+#pragma warning disable CA1422 // Validar la compatibilidad de la plataforma
         Window.SetStatusBarColor(Color.FromArgb("#043465").ToAndroid());
+#pragma warning restore CA1422 // Validar la compatibilidad de la plataforma
+
         HandleIntent(Intent);
         ConfigurationNotification();
     }
@@ -27,10 +33,15 @@ public class MainActivity : MauiAppCompatActivity
     {
         CreateNotificationChannel();
 
+#pragma warning disable CA1416 // Validar la compatibilidad de la plataforma
         if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu && ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
         {
-            ActivityCompat.RequestPermissions(this, new[] { Manifest.Permission.PostNotifications }, 0);
+#pragma warning disable CA1416 // Validar la compatibilidad de la plataforma
+            ActivityCompat.RequestPermissions(
+                this, [Manifest.Permission.PostNotifications], 0);
+#pragma warning restore CA1416 // Validar la compatibilidad de la plataforma
         }
+#pragma warning restore CA1416 // Validar la compatibilidad de la plataforma
     }
 
     private void CreateNotificationChannel()

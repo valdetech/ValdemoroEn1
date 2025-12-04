@@ -1,15 +1,8 @@
 ﻿namespace ValdemoroEn1.Models;
 
-public class StopName
+public class StopName(string stopCode, string shortStopCode, string name)
 {
-    public StopName(string stopCode, string shortStopCode, string name)
-    {
-        StopCode = stopCode;
-        ShortStopCode = shortStopCode;
-        Name = name;
-    }
-
-    public string StopCode { get; set; }
-    public string ShortStopCode { get; set; }
-    public string Name { get; set; }
+    public string StopCode { get; set; } = stopCode;
+    public string ShortStopCode { get; set; } = shortStopCode;
+    public string Name { get; set; } = name;
 }

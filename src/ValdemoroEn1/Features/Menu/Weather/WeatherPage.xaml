@@ -27,7 +27,7 @@
             <Grid
                 Margin="0,0,0,16"
                 ColumnDefinitions="*,*"
-                RowDefinitions="70,70">
+                RowDefinitions="70,70, auto">
                 <Border
                     Grid.Row="0"
                     Grid.Column="0"
@@ -121,33 +121,36 @@
                             Text="151-200" />
                     </Grid>
                 </Border>
-            </Grid>
 
-            <Border
+
+                <Border
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="0,16,0,0"
                 Padding="16"
                 Stroke="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
                 StrokeShape="RoundRectangle 20">
-                <Grid
+                    <Grid
                     ColumnDefinitions="*,*,*"
                     ColumnSpacing="30"
                     RowDefinitions="*,*"
                     RowSpacing="6">
-                    <Image
+                        <Image
                         Grid.Row="0"
                         Grid.Column="0"
                         HeightRequest="46"
                         Source="{Binding Weather.Data.Current.Pollution.Aqius, Converter={StaticResource ICAToTextConverter}, ConverterParameter=0}"
                         WidthRequest="46" />
 
-                    <VerticalStackLayout Grid.Row="0" Grid.Column="1">
-                        <Label HorizontalTextAlignment="Center" Text="{Binding Weather.Data.Current.Pollution.Aqius}" />
-                        <Label
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                            <Label HorizontalTextAlignment="Center" Text="{Binding Weather.Data.Current.Pollution.Aqius}" />
+                            <Label
                             FontSize="12"
                             HorizontalTextAlignment="Center"
                             Text="AQI" />
-                    </VerticalStackLayout>
+                        </VerticalStackLayout>
 
-                    <Label
+                        <Label
                         Grid.Row="0"
                         Grid.Column="2"
                         FontSize="12"
@@ -155,55 +158,57 @@
                         Text="{Binding Weather.Data.Current.Pollution.Aqius, Converter={StaticResource ICAToTextConverter}, ConverterParameter=1}"
                         VerticalTextAlignment="Center" />
 
-                    <HorizontalStackLayout Grid.Row="1" Spacing="6">
-                        <Image
+                        <HorizontalStackLayout Grid.Row="1" Spacing="6">
+                            <Image
                             HeightRequest="34"
                             Source="{Binding Weather.Data.Current.Weather.Ic, Converter={StaticResource TextToIconConverter}}"
                             WidthRequest="34" />
-                        <Label
+                            <Label
                             HorizontalTextAlignment="Start"
                             Text="{Binding Weather.Data.Current.Weather.Tp, StringFormat='{0:0}ºc'}"
                             TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                             VerticalTextAlignment="Center" />
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout
+                        <HorizontalStackLayout
                         Grid.Row="1"
                         Grid.Column="1"
                         Spacing="6">
-                        <Image
+                            <Image
                             HeightRequest="26"
                             Source="windspeed"
                             WidthRequest="26">
-                            <Image.Behaviors>
-                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-                            </Image.Behaviors>
-                        </Image>
-                        <Label
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label
                             HorizontalTextAlignment="Center"
                             Text="{Binding Weather.Data.Current.Weather.Ws, Converter={StaticResource MtsToKmConverter}}"
                             VerticalTextAlignment="Center" />
-                    </HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <HorizontalStackLayout
+                        <HorizontalStackLayout
                         Grid.Row="1"
                         Grid.Column="2"
                         Spacing="6">
-                        <Image
+                            <Image
                             HeightRequest="25"
                             Source="humidity"
                             WidthRequest="25">
-                            <Image.Behaviors>
-                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-                            </Image.Behaviors>
-                        </Image>
-                        <Label
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label
                             HorizontalTextAlignment="Center"
                             Text="{Binding Weather.Data.Current.Weather.Hu, StringFormat='{0:0}%'}"
                             VerticalTextAlignment="Center" />
-                    </HorizontalStackLayout>
-                </Grid>
-            </Border>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+
+            </Grid>
 
         </controls:StateLayout.SuccessContent>
     </controls:StateLayout>

@@ -32,7 +32,7 @@
                     BackgroundColor="{StaticResource RedGeneral}"
                     Stroke="{StaticResource White}"
                     StrokeShape="RoundRectangle 10">
-                    <VerticalStackLayout CompressedLayout.IsHeadless="true">
+                    <VerticalStackLayout>
                         <Label
                             x:Name="LabelIcon"
                             FontFamily="FontAwesomeSolid"

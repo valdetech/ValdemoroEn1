@@ -1,11 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Xml;
-
-#if ANDROID
-using Microsoft.Maui.Platform;
-#endif
 
 namespace ValdemoroEn1.Common;
 
@@ -22,25 +17,12 @@ public class Helper
         return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
     }
 
-    public static bool ValidateEmail(string email)
-    {
-        if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email))
-        {
-            return false;
-        }
-
-        Regex regex = new(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-        Match match = regex.Match(email);
-
-        return match.Success;
-    }
-
     //The ideal is to create a database and save the stops.
 
     public static IEnumerable<StopName> Stops()
     {
-        string json = Preferences.Get("stopNames", "default");
-        if (json is "default") return new List<StopName>();
+        string json = Preferences.Get("stopNames", null);
+        if (string.IsNullOrEmpty(json)) return [];
 
         return JsonSerializer.Deserialize<IEnumerable<StopName>>(json);
     }
@@ -85,13 +67,11 @@ public class Helper
     }
 }
 
-public class CustomJsonWriter : Newtonsoft.Json.JsonTextWriter
+public class CustomJsonWriter(TextWriter writer) : Newtonsoft.Json.JsonTextWriter(writer)
 {
-    public CustomJsonWriter(TextWriter writer) : base(writer) { }
-
     public override void WritePropertyName(string name)
     {
-        if (name.StartsWith("@") || name.StartsWith("#"))
+        if (name.StartsWith('@') || name.StartsWith('#'))
         {
             base.WritePropertyName(name[1..]);
         }

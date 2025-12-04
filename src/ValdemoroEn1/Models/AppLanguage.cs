@@ -1,14 +1,8 @@
 ﻿namespace ValdemoroEn1.Models
 {
-    public class AppLanguage
+    public class AppLanguage(string culture, string language)
     {
-        public AppLanguage(string culture, string language)
-        {
-            Culture = culture;
-            Language = language;
-        }
-
-        public string Culture { get; set; }
-        public string Language { get; set; }
+        public string Culture { get; set; } = culture;
+        public string Language { get; set; } = language;
     }
 }

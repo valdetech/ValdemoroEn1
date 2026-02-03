@@ -16,14 +16,14 @@ public static partial class LifecycleEventsExtensions
         builder.ConfigureLifecycleEvents(events =>
         {
 #if IOS
-            events.AddiOS(iOS => iOS.WillFinishLaunching((app, launchOptions) => {
+             events.AddiOS(iOS => iOS.WillFinishLaunching((app, launchOptions) => {
                 CrossFirebase.Initialize();
-                FirebaseCloudMessagingImplementation.Initialize();
                 return false;
             }));
 #else
-            events.AddAndroid(android => android.OnCreate((activity, _) =>
-                CrossFirebase.Initialize(activity)));
+            events.AddAndroid(android => android.OnCreate((activity, _) => {
+                CrossFirebase.Initialize(activity, () => Platform.CurrentActivity);
+            }));
 #endif
         });
 

@@ -82,10 +82,10 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="4.0.1" />
 		<PackageReference Include="GoogleApi" Version="5.8.14" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="14.1.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.60" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.60" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.70" />
 	</ItemGroup>
 
 	<PropertyGroup>

@@ -97,7 +97,7 @@
 		<AndroidPackageFormat>aab</AndroidPackageFormat>
 		<AndroidUseAapt2>True</AndroidUseAapt2>
 		<AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-		<RunAOTCompilation>true</RunAOTCompilation>
+		<RunAOTCompilation Condition="'$(UseMonoRuntime)' == 'true'">true</RunAOTCompilation>
 		<AndroidLinkTool>r8</AndroidLinkTool>
 		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
 		<EnableLLVM>false</EnableLLVM>

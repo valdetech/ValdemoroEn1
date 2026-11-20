@@ -14,5 +14,8 @@ public static partial class HandlersExtensions
 
     private static void RegisterMappers()
     {
+#if ANDROID
+        RegisterAndroidMappers();
+#endif
     }
 }

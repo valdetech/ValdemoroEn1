@@ -20,9 +20,6 @@ public class MainActivity : MauiAppCompatActivity
     protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
-#pragma warning disable CA1422 // Validar la compatibilidad de la plataforma
-        Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#043465"));
-#pragma warning restore CA1422 // Validar la compatibilidad de la plataforma
 
         HandleIntent(Intent);
         ConfigurationNotification();

@@ -69,19 +69,17 @@ public class ApiService
     {
         var snapshot = await CrossFirebaseFirestore.Current
             .GetCollection(ApiKeysCollectionPath)
-            .LimitedTo(1)
-            .GetDocumentsAsync<Dictionary<string, object>>();
-        var data = snapshot.Documents.FirstOrDefault()?.Data;
+            .GetDocumentsAsync<ApiKeysDocument>();
 
-        if (data is null)
+        if (!snapshot.Documents.Any())
             throw new InvalidOperationException($"The Firestore collection '{ApiKeysCollectionPath}' is empty.");
 
-        if (!data.TryGetValue(IQAirFieldName, out object value) ||
-            value is not string apiKey ||
-            string.IsNullOrWhiteSpace(apiKey))
-        {
+        string apiKey = snapshot.Documents
+            .Select(document => document.Data?.IQAir)
+            .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value));
+
+        if (apiKey is null)
             throw new InvalidOperationException($"The Firestore field '{IQAirFieldName}' is missing or empty.");
-        }
 
         return apiKey;
     }

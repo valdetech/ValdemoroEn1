@@ -28,9 +28,13 @@ public partial class SchedulesRealTimePageViewModel : BaseViewModel, IQueryAttri
     private async Task SchedulesAsync()
     {
         StopTimesResponse = await ApiService.SchedulesAsync(stopCode);
-        var times = StopTimesResponse.StopTimes.Times.Time;
+        var times = StopTimesResponse?.StopTimes?.Times?.Time;
 
-        if (times is null) return;
+        if (times is null)
+        {
+            StopTimesGroups.Clear();
+            return;
+        }
 
         var stopTimeGroups = FlattenTimes(times);
 

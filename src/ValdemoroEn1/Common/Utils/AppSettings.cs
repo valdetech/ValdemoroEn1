@@ -25,6 +25,12 @@ public class AppSettings
     public const string CrtmApiUrl = "https://www.crtm.es/widgets/api/";
     public const string CrtmWeb = "https://www.crtm.es";
     public const string CrtmApiCodMunicipaly = "4426";
+    public const string CrtmRenfeStopCode = "5_86";
+
+    //Renfe
+    public const string RenfeApiUrl = "https://epe.api.renfe.es/epe/catalogo-pro/";
+    public const string RenfeApiClientId = "34a20f347a218faa2781152e1d5b1d8a";
+    public const string RenfeApiCodStation = "60104";
 
     //Google
     public const string TermsGoogleURL = "https://policies.google.com/terms?hl=es";

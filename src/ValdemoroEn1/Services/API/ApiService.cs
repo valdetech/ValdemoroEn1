@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Globalization;
+using System.Net.Http.Json;
 using Plugin.Firebase.Firestore;
 using ValdemoroEn1.Common.Utils;
 
@@ -13,6 +14,7 @@ public class ApiService
     private readonly HttpClient fuelhttpClient = new();
     private readonly HttpClient iqairhttpClient = new();
     private readonly HttpClient crtmHttpClient = new();
+    private readonly HttpClient renfeHttpClient = new();
 
     public ApiService()
     {
@@ -27,6 +29,11 @@ public class ApiService
 
         crtmHttpClient.BaseAddress = new Uri(AppSettings.CrtmApiUrl);
         crtmHttpClient.Timeout = TimeSpan.FromSeconds(40);
+
+        renfeHttpClient.BaseAddress = new Uri(AppSettings.RenfeApiUrl);
+        renfeHttpClient.Timeout = TimeSpan.FromSeconds(40);
+        renfeHttpClient.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+        renfeHttpClient.DefaultRequestHeaders.Add("X-IBM-Client-Id", AppSettings.RenfeApiClientId);
     }
 
     public async Task<MovieResponse> MovieTimesAsync()
@@ -79,9 +86,62 @@ public class ApiService
         return apiKey;
     }
 
-    public Task<StopTimesResponse> SchedulesAsync(string stopCode)
+    public async Task<StopTimesResponse> SchedulesAsync(string stopCode)
     {
-        return crtmHttpClient.GetFromJsonAsync<StopTimesResponse>($"GetStopsTimes.php?codStop={stopCode}&type=1&orderBy=2&stopTimesByIti=3");
+        StopTimesResponse stopTimes = await crtmHttpClient.GetFromJsonAsync<StopTimesResponse>(
+            $"GetStopsTimes.php?codStop={stopCode}&type=1&orderBy=2&stopTimesByIti=3");
+
+        if (stopTimes?.StopTimes is null)
+            throw new InvalidDataException("The CRTM stop-times response is missing stop information.");
+
+        bool hasCrtmTimes = stopTimes.StopTimes.Times?.Time is { Count: > 0 };
+        if (stopCode != AppSettings.CrtmRenfeStopCode || hasCrtmTimes)
+            return stopTimes;
+
+        RenfeStopTimesResponse renfeStopTimes = await renfeHttpClient.GetFromJsonAsync<RenfeStopTimesResponse>(
+            $"hcr-cercanias-middleware/estaciones/{AppSettings.RenfeApiCodStation}");
+
+        if (renfeStopTimes?.Station?.Departures is null)
+            throw new InvalidDataException("The Renfe stop-times response is missing departures.");
+
+        stopTimes.StopTimes.Times ??= new Times();
+        stopTimes.StopTimes.Times.Time = renfeStopTimes.Station.Departures
+            .Select(ToTimeStop)
+            .ToList();
+
+        return stopTimes;
+    }
+
+    private static TimeStop ToTimeStop(RenfeDeparture departure)
+    {
+        string departureTime = !string.IsNullOrWhiteSpace(departure.RealDepartureTime)
+            ? departure.RealDepartureTime
+            : !string.IsNullOrWhiteSpace(departure.DepartureTime)
+                ? departure.DepartureTime
+                : departure.PlannedDepartureTime;
+
+        if (!DateTime.TryParseExact(
+                departureTime,
+                "dd-MM-yyyy HH:mm:ss",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime parsedTime))
+        {
+            throw new InvalidDataException($"The Renfe departure time '{departureTime}' is invalid.");
+        }
+
+        return new TimeStop
+        {
+            Line = new Line
+            {
+                CodLine = $"5__{departure.Line}___",
+                ShortDescription = departure.Line,
+                Description = $"{departure.Line}-Cercanías Madrid",
+                CodMode = "5"
+            },
+            Destination = departure.Destination,
+            StopTime = parsedTime
+        };
     }
 
     public Task<StopsResponse> StopsAsync()

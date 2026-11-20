@@ -166,7 +166,7 @@
     <value>It seems that there is an error in the Madrid regional transport consortium server, please try again later.</value>
   </data>
   <data name="CrtmInfo" xml:space="preserve">
-    <value>Access to public transport schedules. It is about showing the data in a simple way and contrasted with official sources of the CRTM but in a particular way, that is, there is no link with the consortium.</value>
+    <value>Access to public transport schedules with data checked against official CRTM and Renfe sources. The app is independent and is not affiliated with either the transport consortium or the railway operator.</value>
   </data>
   <data name="DelAccount" xml:space="preserve">
     <value>Delete account</value>

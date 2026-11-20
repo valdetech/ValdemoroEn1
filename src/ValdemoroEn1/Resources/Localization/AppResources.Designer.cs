@@ -657,14 +657,14 @@ namespace ValdemoroEn1.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La compra de las entradas del teatro se obtiene a través de la web del ayuntamiento de Valdemoro..
+        ///   Looks up a localized string similar to La programación y la venta de entradas del Teatro Municipal Juan Prado se ofrecen a través de la plataforma Sacatuentrada..
         /// </summary>
         public static string TheaterInfo {
             get {
                 return ResourceManager.GetString("TheaterInfo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Ver trailer.
         /// </summary>

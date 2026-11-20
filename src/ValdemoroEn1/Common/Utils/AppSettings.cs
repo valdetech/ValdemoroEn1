@@ -3,9 +3,9 @@
 public class AppSettings
 {
     //Teatro
-    public const string TheatherValdemoroUrl = "https://www.valdemoro.es/entradasteatro";
-    public const string TheaterUrl = "https://www.giglon.com/widget/web/guest/compra-integrada/-/cip_WAR_giglonportlet_INSTANCE_xkBCzypyXP4y?widget=true&userIdWidget=55316";
-    
+    public const string TheatherValdemoroUrl = "https://teatrodevaldemoro.sacatuentrada.es";
+    public const string TheaterUrl = TheatherValdemoroUrl;
+
     //Cines
     public const string CinemaUrl = "https://www.centrocomercialelreston.com/";
 

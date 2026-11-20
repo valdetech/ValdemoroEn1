@@ -318,7 +318,7 @@ ValdemoroEn1!</value>
     <value>Teatro</value>
   </data>
   <data name="TheaterInfo" xml:space="preserve">
-    <value>La compra de las entradas del teatro se obtiene a través de la web del ayuntamiento de Valdemoro.</value>
+    <value>La programación y la venta de entradas del Teatro Municipal Juan Prado se ofrecen a través de la plataforma Sacatuentrada.</value>
   </data>
   <data name="Trailer" xml:space="preserve">
     <value>Ver trailer</value>

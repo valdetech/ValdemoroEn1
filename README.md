@@ -22,6 +22,9 @@ Decido publicar el código fuente de mi aplicación en **[.NET MAUI](https://lea
 
 Espero que podáis aprender con el proyecto 👋🏽
 
+# Teatro
+* [Teatro Municipal Juan Prado: programación y venta de entradas](https://teatrodevaldemoro.sacatuentrada.es)
+
 # Geoportal Gasolineras API
 * [Geoportal Gasolineras](https://geoportalgasolineras.es/geoportal-instalaciones/Inicio)
 * [API Rest](https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help)

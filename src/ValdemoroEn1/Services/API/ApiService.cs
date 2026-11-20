@@ -1,10 +1,14 @@
 ﻿using System.Net.Http.Json;
+using Plugin.Firebase.Firestore;
 using ValdemoroEn1.Common.Utils;
 
 namespace ValdemoroEn1.Services;
 
 public class ApiService
 {
+    private const string ApiKeysCollectionPath = "apikeys";
+    private const string IQAirFieldName = "IQAir";
+
     private readonly HttpClient cinemahttpClient = new();
     private readonly HttpClient fuelhttpClient = new();
     private readonly HttpClient iqairhttpClient = new();
@@ -43,15 +47,36 @@ public class ApiService
         return fuelhttpClient.GetFromJsonAsync<List<FuelResponse>>("Listados/ProductosPetroliferos");
     }
 
-    public Task<WeatherResponse> WeatherAsync()
+    public async Task<WeatherResponse> WeatherAsync()
     {
-        string key = AppKeys.IQAirApiKey;
+        string key = await GetIQAirApiKeyAsync();
         string country = AppSettings.IQAirApiCountry;
         string state = AppSettings.IQAirApiState;
         string city = AppSettings.IQAirApiCity;
 
-        return iqairhttpClient.GetFromJsonAsync<WeatherResponse>($"city?city={city}&state={state}" +
-            $"&country={country}&key={key}");
+        return await iqairhttpClient.GetFromJsonAsync<WeatherResponse>($"city?city={city}&state={state}" +
+            $"&country={country}&key={Uri.EscapeDataString(key)}");
+    }
+
+    private static async Task<string> GetIQAirApiKeyAsync()
+    {
+        var snapshot = await CrossFirebaseFirestore.Current
+            .GetCollection(ApiKeysCollectionPath)
+            .LimitedTo(1)
+            .GetDocumentsAsync<Dictionary<string, object>>();
+        var data = snapshot.Documents.FirstOrDefault()?.Data;
+
+        if (data is null)
+            throw new InvalidOperationException($"The Firestore collection '{ApiKeysCollectionPath}' is empty.");
+
+        if (!data.TryGetValue(IQAirFieldName, out object value) ||
+            value is not string apiKey ||
+            string.IsNullOrWhiteSpace(apiKey))
+        {
+            throw new InvalidOperationException($"The Firestore field '{IQAirFieldName}' is missing or empty.");
+        }
+
+        return apiKey;
     }
 
     public Task<StopTimesResponse> SchedulesAsync(string stopCode)

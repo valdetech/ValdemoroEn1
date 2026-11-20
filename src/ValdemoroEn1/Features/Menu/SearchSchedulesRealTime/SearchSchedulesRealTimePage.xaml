@@ -22,7 +22,7 @@
                     <SearchBar x:Name="StoppedSearchBar"
                     BackgroundColor="White"
                     CancelButtonColor="{AppThemeBinding Light={StaticResource BlueGeneral}, Dark={StaticResource White}}"
-                    FontSize="Small"
+                    FontSize="14"
                     Placeholder="{localization:Translate StopCode}"
                     Text="{Binding TextStopCode}">
                         <SearchBar.Effects>

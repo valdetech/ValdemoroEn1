@@ -55,6 +55,8 @@ Espero que podáis aprender con el proyecto 👋🏽
 4. Set **[GoogleService-Info.plist|google-services.json]** build action behaviour to **[Bundle Resource|GoogleServicesJson]** by Right clicking/Build Action.
 5. Auth setup [Auth](https://github.com/TobiasBuchholz/Plugin.Firebase/blob/development/docs/auth.md)
 6. Cloud Messaging setup [Cloud Messaging](https://github.com/TobiasBuchholz/Plugin.Firebase/blob/development/docs/cloud_messaging.md)
+7. Enable Cloud Firestore and create the `apikeys` collection with a single document containing the string field `IQAir`. The document ID can be changed without updating the app.
+8. Configure the Firestore security rules so the app can read `apikeys`, granting only the permissions it needs.
 
 ## Google cloud setup
 1. Enable APIS in the [Google cloud](https://developers.google.com/maps/documentation/places/web-service/cloud-setup)
@@ -64,13 +66,12 @@ Espero que podáis aprender con el proyecto 👋🏽
 ```
 public class AppKeys
 {
-    //IQAir
-    public const string IQAirApiKey = "API KEY";
-
     //Google
     public const string GooglePlacesKey = "API KEY";
 }
 ```
+
+The IQAir API key is read from the `IQAir` field in the only document of the Firestore `apikeys` collection. It is not stored in `AppKeys`.
 
 # Architecture
 The application has a clean and tidy architecture, applying the best practices, MVVM and pattern feature-oriented.
